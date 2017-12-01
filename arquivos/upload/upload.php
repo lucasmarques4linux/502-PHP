@@ -13,7 +13,7 @@ if ("POST" == $_SERVER['REQUEST_METHOD']) {
 
 		$nome = basename($_FILES['arquivo']['name']);
 
-		$movido = move_uploaded_file($_FILES['arquivo']['tmp_name'], "{$nome}");
+		$movido = move_uploaded_file($_FILES['arquivo']['tmp_name'], "/{$nome}");
 
 		if ($movido) {
 			echo "OK";
