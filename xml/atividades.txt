@@ -1,0 +1,5 @@
+Primeira parte: Trazer os alunos do banco;
+
+Exportar em XML;
+
+Exportar em JSON;
