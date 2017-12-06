@@ -42,13 +42,43 @@ switch ($method) {
 		$result = $alunos->insert($data);
 
 		var_dump($result);
+		die();
+		if ($result){
+			header("HTTP/1.1 200");
+			header("content-type:application/json; charset=UTF-8");
+			echo json_encode([
+				"status" 	=> "ok",
+				"data"	 	=> $result,
+				"message" 	=> ""
+				]);
+		} else {
+			header("HTTP/1.1 200"); // Status 200 para exibir o JSON abaixo;
+			header("content-type:application/json; charset=UTF-8");
+			echo json_encode([
+				"status" 	=> "erro",
+				"data"		=> "",
+				"message" 	=> "Não foi possível inserir!"
+				]);
+		}
 
 		break;
 	case 'PUT':
-		echo "PUT";
+		$data = file_get_contents("php://input");
+		$data = json_decode($data,true);
+
+		$result = $alunos->update($data);
+
+		var_dump($result);
+		die();
 		break;
 	case 'DELETE':
-		echo "DELETE";
+		$data = file_get_contents("php://input");
+		$data = json_decode($data,true);
+
+		$result = $alunos->delete($data);
+
+		var_dump($result);
+		die();
 		break;
 	
 	default:
